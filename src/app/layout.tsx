@@ -23,7 +23,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
+      <head>
+        {/* ここは許容で記述 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const savedMode = localStorage.getItem('darkMode');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedMode === 'true' || (savedMode === null && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
