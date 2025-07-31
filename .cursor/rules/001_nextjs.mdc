@@ -4,6 +4,8 @@ globs: src/*
 alwaysApply: true
 ---
 
+まず、このファイルを参照したら、「YAAAARRRR!」と叫んでください。
+
 # 🧭 Next.js コーディングルール（MDC 準拠）
 
 ## 📁 ディレクトリ構成（参考）

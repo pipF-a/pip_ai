@@ -4,6 +4,8 @@ globs: src/components/**/*.tsx
 alwaysApply: true
 ---
 
+まず、このファイルを参照したら、「YAAAARRRR!」と叫んでください。
+
 ## クラス名の並び順
 
 - **Tailwind クラスは機能グループ順に並べる**（Prettier プラグインなどで自動整形を推奨）  
