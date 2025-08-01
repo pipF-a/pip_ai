@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CiCloudSun, CiCloudMoon } from 'react-icons/ci';
-import { useDarkMode } from '../hooks/useDarkMode';
+import { DarkModeToggle } from './DarkModeToggle';
+
 
 type HeaderProps = {
   title?: string;
@@ -13,11 +13,10 @@ type HeaderProps = {
 export const Header: React.FC<HeaderProps> = ({ 
   title = 'pip_ai', 
 }) => {
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <header className="">
-      <div className="p-4 flex items-center justify-between">
+      <div className="p-4 flex items-baseline justify-between">
         <motion.h1
           className="font-bold relative inline-block"
           style={{
@@ -47,21 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
           }}
         >
           {title}
-        </motion.h1>
-        
-        <motion.button
-          onClick={toggleDarkMode}
-          className=" dark:bg-gray-800 text-gray-700 dark:text-gray-300  dark:hover:bg-gray-700 transition-colors duration-200"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label={isDarkMode ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
-        >
-          {isDarkMode ? (
-            <CiCloudSun className="w-6 h-6" />
-          ) : (
-            <CiCloudMoon className="w-6 h-6" />
-          )}
-        </motion.button>
+        </motion.h1> 
+        <DarkModeToggle />
       </div>
     </header>
   );
