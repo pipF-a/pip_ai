@@ -8,23 +8,31 @@ type TypewriterTextProps = {
   text: string;
   speed?: number;
   className?: string;
+  onComplete?: () => void;
 };
 
 export const TypewriterText: React.FC<TypewriterTextProps> = ({ 
   text, 
   speed = 80,
-  className = "text-[30px] font-medium"
+  className = "text-[30px] font-medium",
+  onComplete
 }) => {
-  const { displayText } = useTypewriter(text, speed);
+  const { displayText, isComplete } = useTypewriter(text, speed);
+
+  React.useEffect(() => {
+    if (isComplete && onComplete) {
+      onComplete();
+    }
+  }, [isComplete, onComplete]);
 
   return (
     <h2 className={className} style={{ fontFamily: "'Bitcount Prop Single', monospace" }}>
       {displayText}
       <motion.span
-        className="inline-block w-0.5 h-5 ml-1"
+        className="inline-block w-0.5 h-7 ml-1"
         style={{ 
           verticalAlign: 'baseline',
-          transform: 'translateY(3px)',
+          transform: 'translateY(0px)',
           background: "linear-gradient(90deg, #ff005a, #fffd38, #00ffae, #0099ff, #ff005a)",
           backgroundSize: "1000% 100%",
           backgroundPosition: "100% 50%",
