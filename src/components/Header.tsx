@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { DarkModeToggle } from './DarkModeToggle';
+import clsx from 'clsx';
 
 
 type HeaderProps = {
@@ -15,8 +16,8 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
 
   return (
-    <header className="">
-      <div className="p-4 flex items-baseline justify-between">
+    <header className={clsx('')}>
+      <div className={clsx('flex items-baseline justify-between p-4')}>
         <motion.h1
           className="font-bold relative inline-block"
           style={{
