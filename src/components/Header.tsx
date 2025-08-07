@@ -11,9 +11,9 @@ type HeaderProps = {
   className?: string;
 };
 
-export const Header: React.FC<HeaderProps> = ({ 
+export function Header({ 
   title = 'pip_ai', 
-}) => {
+}: HeaderProps) {
 
   return (
     <header className={clsx('')}>
@@ -52,4 +52,4 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
     </header>
   );
-}; 
+}

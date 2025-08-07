@@ -6,7 +6,7 @@ import { CiCloudSun, CiCloudMoon } from 'react-icons/ci';
 import { useDarkMode } from '../hooks/useDarkMode';
 import clsx from 'clsx';
 
-export const DarkModeToggle: React.FC = () => {
+export function DarkModeToggle() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (

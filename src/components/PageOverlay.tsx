@@ -10,10 +10,10 @@ type PageOverlayProps = {
   onAnimationComplete?: () => void;
 };
 
-export const PageOverlay: React.FC<PageOverlayProps> = ({ 
+export function PageOverlay({
   children, 
   onAnimationComplete 
-}) => {
+}: PageOverlayProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [isTypewriterComplete, setIsTypewriterComplete] = useState(false);
   const { isDarkMode } = useDarkMode();

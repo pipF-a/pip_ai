@@ -11,12 +11,12 @@ type TypewriterTextProps = {
   onComplete?: () => void;
 };
 
-export const TypewriterText: React.FC<TypewriterTextProps> = ({ 
+export function TypewriterText({
   text, 
   speed = 80,
   className = "text-[30px] font-medium",
   onComplete
-}) => {
+}: TypewriterTextProps) {
   const { displayText, isComplete } = useTypewriter(text, speed);
 
   React.useEffect(() => {

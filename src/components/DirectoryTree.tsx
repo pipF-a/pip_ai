@@ -23,10 +23,10 @@ type DirectoryTreeProps = {
   title?: string;
 };
 
-const DirectoryTreeItem: React.FC<DirectoryTreeItemProps> = ({ 
+function DirectoryTreeItem({ 
   data, 
   level = 0 
-}) => {
+}: DirectoryTreeItemProps) {
   const [isExpanded, setIsExpanded] = useState(level < 2);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const hasChildren = data.children && data.children.length > 0;
@@ -100,9 +100,9 @@ const DirectoryTreeItem: React.FC<DirectoryTreeItemProps> = ({
   );
 };
 
-export const DirectoryTree: React.FC<DirectoryTreeProps> = ({ 
+export function DirectoryTree({ 
   items, 
-}) => {
+}: DirectoryTreeProps) {
 
   return (
     <div className="p-3">
