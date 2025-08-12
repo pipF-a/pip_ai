@@ -1,3 +1,4 @@
+import { About } from "@/components/About";
 import { Header } from "@/components/Header";
 import { PageOverlay } from "@/components/PageOverlay";
 
@@ -10,6 +11,7 @@ export default function Home() {
           <aside className="overflow-y-auto">
           </aside>
           <section className="max-w-[1200px] w-full mx-auto">
+            <About/>
           </section>
         </main>
       </div>
