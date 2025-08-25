@@ -15,7 +15,7 @@ export interface SocialImage {
 export interface AboutData {
   title: string;
   name: string;
-  career: {
+  about: {
     title: string;
     description: string;
   };
@@ -32,9 +32,9 @@ export interface AboutData {
 export const getAboutData = (isDarkMode: boolean): AboutData => ({
   title: "About.tsx",
   name: "pip",
-  career: {
-    title: "Career",
-    description: "2020年にITコンサル系の会社にフロントエンドとして4年間在籍し、24年から投資系の企業に転職しフロントエンドして活動中。"
+  about: {
+    title: "About",
+    description: "ふろんとえんどえんじにあ。"
   },
   skills: {
     title: "Skills",
@@ -42,7 +42,7 @@ export const getAboutData = (isDarkMode: boolean): AboutData => ({
       { src: "/about/html5.svg", alt: "HTML5", width: 20, height: 20 },
       { src: "/about/sass.svg", alt: "Sass", width: 24, height: 24 },
       { src: "/about/nextjs.svg", alt: "Next.js", width: 24, height: 24 },
-      { src: isDarkMode ? "/about/react_dark.svg" : "/about/react_light.svg", alt: "React", width: 24, height: 24 },
+      { src: isDarkMode ? "/react_dark.svg" : "/react_light.svg", alt: "React", width: 24, height: 24 },
       { src: "/about/javascript.svg", alt: "JavaScript", width: 24, height: 24 },
       { src: "/about/typescript.svg", alt: "TypeScript", width: 24, height: 24 },
       { src: "/about/tailwindcss.svg", alt: "Tailwind CSS", width: 24, height: 24 },

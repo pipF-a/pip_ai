@@ -8,6 +8,7 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import { getAboutData } from '@/data/about';
 
 export const About = () => {
+  
   const controls = useAnimation();
   const { isDarkMode } = useDarkMode();
   
@@ -30,9 +31,8 @@ export const About = () => {
   }, [controls]);
 
   return (
-    <section
+    <div
       className={clsx(
-        'w-[410px]',
         'rounded-[5px]',
         'border',
         'border-solid',
@@ -56,7 +56,8 @@ export const About = () => {
             'h-[80px]',
             'rounded-full',
             'p-[2px]',
-            'm-auto'
+            'm-auto',
+            'mt-3'
           )}
           style={{
             background: 'linear-gradient(90deg, #ff005a, #fffd38, #00ffae, #0099ff, #ff005a)',
@@ -92,13 +93,13 @@ export const About = () => {
         )}>
         <h4 className={clsx(
           'text-sm',
-        )}>{aboutData.career.title}</h4>
+        )}>{aboutData.about.title}</h4>
         </div>
         <p className={clsx(
           'mt-1',
           'text-sm',
           'mt-2'
-        )}>{aboutData.career.description}</p>
+        )}>{aboutData.about.description}</p>
         <div className={clsx('flex','justify-between','gap-7','mt-4')}>
           <div>
             <div className={clsx(
@@ -155,6 +156,6 @@ export const About = () => {
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }
