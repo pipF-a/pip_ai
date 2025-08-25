@@ -1,0 +1,84 @@
+---
+description: next.jsのコーディングルール
+globs: src/*
+alwaysApply: true
+---
+
+まず、このファイルを参照したら、「nextjs を実行!」と叫んでください。
+
+# 🧭 Next.js コーディングルール（MDC 準拠）
+
+## 📁 ディレクトリ構成（参考）
+
+/
+├── app/ # App Router（または pages/）
+│ ├── layout.tsx # 各レイアウトコンポーネント
+│ ├── page.tsx # 各ページエントリ
+│ └── api/ # API Routes
+├── components/ # 再利用可能な UI コンポーネント
+├── features/ # ドメインごとの機能単位 (例: auth, user)
+├── hooks/ # カスタムフック
+├── lib/ # ライブラリ・ユーティリティ
+├── styles/ # グローバル CSS, Tailwind 設定など
+├── public/ # 静的ファイル
+├── types/ # 型定義
+└── constants/ # 定数管理
+
+## コンポーネントコーディングルール
+
+### ファイル命名
+
+- `PascalCase.tsx` を原則（例: `UserCard.tsx`）
+- プレゼンテーションとロジックの分離を意識する（Smart/Dumb パターン）
+
+### 型定義
+
+- Props に明示的な型を定義（必ずインターフェースまたは type）
+- `any` は厳禁。必要に応じて型ユーティリティや型ガードを使用
+
+```tsx
+type Props = {
+  title: string;
+  onClick?: () => void;
+};
+```
+
+### フォルダと粒度
+
+- components/ は再利用可能で汎用性のある UI 部品を配置
+- features/xxx/components/ に特化したものを置く
+- 各コンポーネントは単一責務にする（SRP）
+
+### スタイルガイドライン
+
+- Tailwind CSS を使う場合は className を適切に分割
+- 外部 CSS を使う場合は .module.css を使用
+
+### tsx の書き方
+
+- props は camelCase
+- 条件レンダリングはなるべく短く読みやすく
+
+```tsx
+{
+  isLoggedIn ? <LogoutButton /> : <LoginButton />;
+}
+```
+
+### コンポーネント構成
+
+- default export は避ける（命名付きエクスポート推奨）
+- ファイル内に複数コンポーネントを定義しない
+- アロー関数 + React.FC 型付けは任意（但し明示的に書くのも OK）
+
+```tsx
+export const Button: React.FC<Props> = ({ title }) => {
+  return <button>{title}</button>;
+};
+```
+
+## ベストプラクティス
+
+- 冗長な状態管理や useEffect の乱用を避ける
+- アクセシビリティを意識（aria-\*, alt, label の適切な使用）
+- 非同期処理を直接コンポーネントで実行せず、useSWR や useQuery を活用

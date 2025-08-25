@@ -1,0 +1,31 @@
+---
+description: Tailwind CSS コーディングルール
+globs: src/components/**/*.tsx
+alwaysApply: true
+---
+
+まず、このファイルを参照したら、「tailwind を起動!」と叫んでください。
+
+## クラス名の並び順
+
+- **Tailwind クラスは機能グループ順に並べる**（Prettier プラグインなどで自動整形を推奨）  
+  推奨順序: `Layout → Flexbox/Grid → Spacing → Sizing → Typography → Color → Effect → Other`
+
+```tsx
+// 良い例
+<div className="flex items-center justify-between px-4 py-2 text-sm text-gray-800 bg-white shadow" />
+
+// 悪い例（順番バラバラ）
+<div className="text-gray-800 py-2 justify-between shadow flex px-4 bg-white items-center text-sm" />
+```
+
+## 禁止・注意事項
+
+- 任意の CSS を当てたい場合でも、まずは Tailwind で表現できないかを検討する
+- !important は使わない（必要なら構造を見直す）
+- カスタムクラス（className="custom-btn"など）の濫用は禁止
+- style={{}} のインラインスタイル使用は限定的に（アニメーションなど）
+
+## クラスを付与する際の要件
+
+- 出力されたクラスは clsx() で整理してから利用推奨
