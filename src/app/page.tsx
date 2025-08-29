@@ -8,14 +8,12 @@ export default function Home() {
     <PageOverlay>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="w-full grid grid-cols-[200px_1fr] min-h-0 max-w-[1470px] mx-auto">
-          <aside className="overflow-y-auto">
+        <main className="w-full lg:grid lg:grid-cols-[200px_1fr] min-h-0 max-w-[1470px] mx-auto relative grid-cols-1 px-4">
+          <aside className="hidden md:overflow-y-auto lg:block">
           </aside>
-          <section className="max-w-[1200px] w-full mx-auto grid gap-10 grid-cols-[410px_1fr]">
+          <section className="w-full mx-auto block gap-10 md:grid-cols-[410px_1fr] max-w-[1200px] grid-cols-2 sm:grid">
             <About/>
-            <div className="w-full overflow-hidden">
-              <HoolsLab />
-            </div>
+            <HoolsLab />
           </section>
         </main>
       </div>

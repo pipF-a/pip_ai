@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import clsx from 'clsx'
-import React from 'react'
+import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 
@@ -11,21 +11,27 @@ import 'swiper/css/navigation'
 
 import { useDarkMode } from '@/hooks/useDarkMode';
 import { getHooksData } from '@/data/hooks';
+import { CodeBlock } from './CodeBlock';
 
 export const HoolsLab = () => {
+  const [selectedHook, setSelectedHook] = useState<string | null>(null);
   
   const { isDarkMode } = useDarkMode();
-    // データファイルからデータを取得
+  // データファイルからデータを取得
   const hooksData = getHooksData(isDarkMode);
 
   return (
     <div
       className={clsx(
+        'overflow-hidden',
         'rounded-[5px]',
         'border',
         'border-solid',
         'w-full',
         'max-w-full',
+        'h-fit',
+        'mt-4',
+        'sm:mt-0',
         isDarkMode ? 'border-[#26282f]' : 'border-[#f3edf5]'
       )}
     >
@@ -52,6 +58,32 @@ export const HoolsLab = () => {
           loopAdditionalSlides={3}
           navigation={true}
           className="hooks-swiper"
+          breakpoints={{
+            320: {
+              slidesPerView: 3,
+              spaceBetween: 12
+            },
+            375: {
+              slidesPerView: 2,
+              spaceBetween: 12
+            },
+            460: {
+              slidesPerView: 3,
+              spaceBetween: 12
+            },
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 12
+            },
+            750: {
+              slidesPerView: 2,
+              spaceBetween: 12
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 16
+            }
+          }}
           style={{
             '--swiper-navigation-color': isDarkMode ? '#3b82f6' : '#3b82f6'
           } as React.CSSProperties}
@@ -75,18 +107,48 @@ export const HoolsLab = () => {
                 )}>
                   {hook.name}
                 </p>
-                <button className={clsx(
-                  'px-3 py-1 text-xs rounded-[100vmax] transition-colors cursor-pointer shadow-custom hover:text-[#0a7ea4]',
-                  isDarkMode 
-                    ? 'text-white' 
-                    :'text-[#374151]' 
-                )}>
+                <button 
+                  onClick={() => setSelectedHook(selectedHook === hook.name ? null : hook.name)}
+                  className={clsx(
+                    'px-3 py-0.5 text-xs rounded-[100vmax] transition-colors cursor-pointer shadow-custom hover:text-[#0a7ea4]',
+                    isDarkMode 
+                      ? 'text-white' 
+                      : 'text-[#374151]',
+                  )}
+                >
                   usage
                 </button>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        
+        {/* Code Examples Section */}
+        {selectedHook && (
+          <div className={clsx(
+            'absolute',
+            'inset-0',
+            'max-w-[900px]',
+            'm-auto'
+          )}>
+            {(() => {
+              const hook = hooksData.hooks.find(h => h.name === selectedHook);
+              return hook ? (
+                <CodeBlock
+                  code={hook.codeExample}
+                  language="tsx"
+                  filename={hook.fileName}
+                  title={selectedHook}
+                  description={hook.description}
+                  hint={hook.hint}
+                  showLineNumbers={true}
+                  showCopyButton={true}
+                  onHide={() => setSelectedHook(null)}
+                />
+              ) : null;
+            })()}
+          </div>
+        )}
       </div>
     </div>
   )
