@@ -41,11 +41,11 @@ export const getAboutData = (isDarkMode: boolean): AboutData => ({
     items: [
       { src: "/about/html5.svg", alt: "HTML5", width: 20, height: 20 },
       { src: "/about/sass.svg", alt: "Sass", width: 24, height: 24 },
-      { src: "/about/nextjs.svg", alt: "Next.js", width: 24, height: 24 },
+      { src: "/nextjs.svg", alt: "Next.js", width: 24, height: 24 },
       { src: isDarkMode ? "/react_dark.svg" : "/react_light.svg", alt: "React", width: 24, height: 24 },
       { src: "/about/javascript.svg", alt: "JavaScript", width: 24, height: 24 },
-      { src: "/about/typescript.svg", alt: "TypeScript", width: 24, height: 24 },
-      { src: "/about/tailwindcss.svg", alt: "Tailwind CSS", width: 24, height: 24 },
+      { src: "/typescript.svg", alt: "TypeScript", width: 24, height: 24 },
+      { src: "/tailwindcss.svg", alt: "Tailwind CSS", width: 24, height: 24 },
     ]
   },
   social: {
