@@ -33,8 +33,21 @@ body {
   border-color: #181a1f;
 }
 /* swiperスタイルのオーバーライド */
+.swiper-button-prev,.swiper-button-next  {
+  width: 20px !important;
+  height: 20px !important;
+  top: 60% !important;
+  border-radius: 100vmax;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .05);
+  background-color: #fff;
+}
+
+.dark .swiper-button-prev,
+.dark .swiper-button-next {
+  background-color: #2a2e36 !important;
+}
 .swiper-button-prev:after,
 .swiper-button-next:after {
-  font-size: 16px !important;
+  font-size: 12px !important;
 }
 

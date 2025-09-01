@@ -92,7 +92,7 @@ export const HoolsLab = () => {
             <SwiperSlide key={index}>
               <div className={clsx(
                 'p-4 rounded-lg border h-full text-center transition-transform duration-200',
-                isDarkMode ? 'bg-[#2a2e36] border-[#3a3f4a]' : 'bg-white border-[#e5e7eb]'
+                isDarkMode ? 'border-[#3a3f4a]' : 'bg-white border-[#e5e7eb]'
               )}>
               <Image
                   src={hooksData.icon.src}
@@ -102,7 +102,7 @@ export const HoolsLab = () => {
                   className={clsx('inline-block')}
                 />
                 <p className={clsx(
-                  'font-medium mt-1',
+                  'font-medium mt-1 text-sm',
                   isDarkMode ? 'text-[#e5e7eb]' : 'text-[#374151]'
                 )}>
                   {hook.name}

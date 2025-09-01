@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import clsx from 'clsx';
 import { useDarkMode } from '@/hooks/useDarkMode';
+import { useWindowSize } from '@/hooks/useWindowSize';
 
 type CodeBlockProps = {
   code: string;
@@ -30,6 +31,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   onHide,
 }) => {
   const { isDarkMode } = useDarkMode();
+  const { width } = useWindowSize();
   const [copied, setCopied] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -142,9 +144,10 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         )}>
           {title && (
             <h3 className={clsx(
-              'text-lg',
+              'text-base',
               'font-semibold',
               'mb-3',
+              'md:text-lg',
               isDarkMode ? 'text-gray-200' : 'text-gray-800'
             )}>
               {title}
@@ -152,8 +155,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           )}
           {description && (
             <p className={clsx(
-              'text-sm',
+              'text-xs',
               'mb-3',
+              'md:text-sm',
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             )}>
               {description}
@@ -163,7 +167,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             <div className={clsx(
               'p-3',
               'rounded',
-              'text-sm',
+              'text-xs',
+              'md:text-sm',
               isDarkMode ? 'bg-blue-900/20 border-blue-800 text-blue-200' : 'bg-blue-50 border-blue-200 text-blue-800',
               'border'
             )}>
@@ -175,15 +180,18 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 
       {/* Code content */}
       {!isCollapsed && (
-        <div className="relative">
+        <div className={clsx(
+          "relative",
+          "sm:p-2 sm:text-sm md:p-4 md:text-base"
+        )}>
           <SyntaxHighlighter
             language={language}
             style={theme}
             showLineNumbers={showLineNumbers}
             customStyle={{
               margin: 0,
-              padding: '1rem',
-              fontSize: '0.875rem',
+              padding: width <= 768 ? '0.5rem' : '1rem',
+              fontSize: width <= 768 ? '0.75rem' : '0.875rem',
               lineHeight: '1.5',
               backgroundColor: 'transparent',
             }}
@@ -192,6 +200,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
               marginRight: '1rem',
               minWidth: '2rem',
             }}
+          
           >
             {code}
           </SyntaxHighlighter>
