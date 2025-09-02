@@ -36,6 +36,7 @@ export const About = () => {
         'rounded-[5px]',
         'border',
         'border-solid',
+        'row-span-2',
         isDarkMode ? 'border-[#26282f]' : 'border-[#f3edf5]'
       )}
     >

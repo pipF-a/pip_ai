@@ -27,6 +27,8 @@ export const HoolsLab = () => {
         'rounded-[5px]',
         'border',
         'border-solid',
+        'col-start-2',
+        'col-end-4',
         'w-full',
         'max-w-full',
         'h-fit',
